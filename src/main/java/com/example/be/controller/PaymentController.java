@@ -27,10 +27,7 @@ public class PaymentController {
 
         Map<String, Object> response = new HashMap<>();
         response.put("order", order);
-        response.put("paymentUrl", "https://fe-three-sigma.vercel.app/payment-gateway/" + order.getOrderCode());
-
+        response.put("paymentUrl", "http://localhost:3000/payment-gateway/" + order.getOrderCode());
         return response;
     }
 }
-
-phần này nên sửa như nào
