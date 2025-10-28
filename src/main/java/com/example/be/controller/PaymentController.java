@@ -3,8 +3,10 @@ package com.example.be.controller;
 import com.example.be.dto.OrderRequestDTO;
 import com.example.be.dto.OrderResponseDTO;
 import com.example.be.service.OrderService;
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -14,9 +16,6 @@ import java.util.Map;
 public class PaymentController {
 
     private final OrderService orderService;
-
-    @Value("${FRONTEND_URL}")
-    private String frontendUrl;
 
     public PaymentController(OrderService orderService) {
         this.orderService = orderService;
@@ -28,7 +27,10 @@ public class PaymentController {
 
         Map<String, Object> response = new HashMap<>();
         response.put("order", order);
-        response.put("paymentUrl", frontendUrl + "/payment-gateway/" + order.getOrderCode());
+        response.put("paymentUrl", "https://fe-three-sigma.vercel.app/payment-gateway/" + order.getOrderCode());
+
         return response;
     }
 }
+
+phần này nên sửa như nào
